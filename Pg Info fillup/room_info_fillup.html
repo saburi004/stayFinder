@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flat Details Form</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 150vh;
+        }
+
+        .form-container {
+            max-width: 700px;
+            width: 100%;
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-container h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 24px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #555;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            outline: none;
+            background-color: #f9f9f9;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input[type="file"] {
+            padding: 3px;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: #007bff;
+            background-color: #fff;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 14px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .form-group small {
+            display: block;
+            margin-top: 6px;
+            font-size: 12px;
+            color: #888;
+        }
+
+        @media (max-width: 768px) {
+            .form-container {
+                padding: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="form-container">
+    <form action="/submit" method="post" enctype="multipart/form-data"></form>
+    <h2>Submit Owner Details</h2>
+    <div class="form-group">
+        <label for="name">Owner Name:</label>
+        <input type="text" id="ownername" name="ownername"  placeholder="Enter the Owner Name">
+    </div>
+
+    <div class="form-group">
+        <label for="mobile">Owner Mobile No:</label>
+        <input type="text" id="ownermobile" name="ownermobile"  placeholder="Enter the Owner Mobile No.">
+    </div>
+    
+    <div class="form-group">
+        <label for="address">Owner Address:</label>
+        <textarea id="owneraddress" name="owneraddress" rows="3" placeholder="Enter the owner complete address"></textarea>
+    </div>
+    
+    <h2>Submit Flat Details</h2>
+         
+        <div class="form-group">
+            <label for="name">Room Name:</label>
+            <input type="text" id="roomname" name="roomname"  placeholder="Enter the Room Name">
+        </div>
+        <!-- Flat Images -->
+        <div class="form-group">
+            <label for="flatImages">Flat Images:</label>
+            <input type="file" id="flatImages" name="flatImages[]" multiple accept="image/*">
+            <small>You can upload multiple images.</small>
+        </div>
+
+        <!-- Address -->
+        <div class="form-group">
+            <label for="address">Address:</label>
+            <textarea id="address" name="address" rows="3" placeholder="Enter the complete address"></textarea>
+        </div>
+
+        <!-- Flat Type -->
+        <div class="form-group">
+            <label for="flatType">Flat Type:</label>
+            <select id="flatType" name="flatType">
+                <option value="1bhk">1 BHK</option>
+                <option value="2bhk">2 BHK</option>
+                <option value="3bhk">3 BHK</option>
+                <option value="3bhk">4 BHK</option>
+            </select>
+        </div>
+
+        <!-- Facilities -->
+        <div class="form-group">
+            <label for="facilities">Facilities:</label>
+            <textarea id="facilities" name="facilities" rows="3" placeholder="E.g., Wi-Fi, Parking, Gym, etc."></textarea>
+        </div>
+
+        <!-- Name of Area -->
+        <div class="form-group">
+            <label for="areaName">Name of Area:</label>
+            <input type="text" id="areaName" name="areaName" placeholder="Enter the area name">
+        </div>
+
+        <!-- Name of Building -->
+        <div class="form-group">
+            <label for="buildingName">Name of Building:</label>
+            <input type="text" id="buildingName" name="buildingName" placeholder="Enter the building name">
+        </div>
+
+        <!-- Number of Roommates -->
+        <div class="form-group">
+            <label for="noOfRoommates">Number of Roommates:</label>
+            <input type="number" id="noOfRoommates" name="noOfRoommates" min="0" placeholder="Enter the number of roommates">
+        </div>
+
+        <!-- Gender -->
+        <div class="form-group">
+            <label for="gender">Gender Preference:</label>
+            <select id="gender" name="gender">
+                <option value="any">Any</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+            </select>
+        </div>
+
+        <!-- Landmark -->
+        <div class="form-group">
+            <label for="landmark">Landmark:</label>
+            <input type="text" id="landmark" name="landmark" placeholder="Enter nearby landmark">
+        </div>
+
+        <!-- Google Embedded Address -->
+        <div class="form-group">
+            <label for="googleEmbed">Google Embedded Address URL:</label>
+            <input type="url" id="googleEmbed" name="googleEmbed" placeholder="Enter the embedded Google Maps URL">
+            <small>Copy and paste the embedded Google Maps link or use the map picker below.</small>
+        </div>
+
+        <!-- Button to open Google Maps Picker -->
+        <div class="form-group">
+            <button type="button" class="submit-btn" onclick="openMapPicker()">Pick location on map</button>
+        </div>
+
+        <!-- Price in Rupees -->
+        <div class="form-group">
+            <label for="price">Price (in ₹):</label>
+            <input type="number" id="price" name="price" min="0" placeholder="Enter the price in rupees">
+        </div>
+
+        <!-- Submit Button -->
+        <div class="form-group">
+            <button type="submit" class="submit-btn">Submit</button>
+        </div>
+    </form>
+</div>
+
+<script>
+    // Function to open a new window for Google Maps Picker
+    function openMapPicker() {
+        // Open a new window/tab for the Google Maps picker
+        window.open('/map-picker.html', '_blank', 'width=800,height=600');
+    }
+
+    // Function to handle location selection and return the embed URL
+    function setLocationEmbedUrl(embedUrl) {
+        document.getElementById('googleEmbed').value = embedUrl;
+    }
+</script>
+
+</body>
+</html>
